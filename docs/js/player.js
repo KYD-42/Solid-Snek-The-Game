@@ -1,5 +1,5 @@
 class Player {
-    constructor(gameScreen, left, top, width, height, imgSrc, segmentWidth, segmentHeight) {
+    constructor(gameScreen, left, top, width, height, imgSrc, segmentWidth, segmentHeight, speed) {
         // gameScreen HTML element
         this.gameScreen = gameScreen;
         // Position values
@@ -18,6 +18,8 @@ class Player {
         this.head = this.createSegment(this.left, this.top, imgSrc);
         this.segments.push(this.head);
         this.gameScreen.appendChild(this.head);
+        // Speed property.
+        this.speed = speed;
     }
     createSegment(left, top, imgSrc) {
         const element = document.createElement("img");
@@ -37,8 +39,8 @@ class Player {
             segment.style.left = prevSegment.style.left;
             segment.style.top = prevSegment.style.top;
           }
-          this.left += this.directionX;
-          this.top += this.directionY;
+          this.left += this.speed * this.directionX;
+          this.top += this.speed * this.directionY;
         this.updatePosition();
     }
     updatePosition() {
@@ -80,16 +82,7 @@ class Player {
         }
             return false;
     }
-    reset(initialLeft, initialTop) {
-            for (let i = this.segments.length - 1; i > 0; i--) {
-              this.segments[i].remove();
-            }
-            this.segments = [this.segments[0]]; // Keep the head
-         // Update the head's position and image source
-            const head = this.segments[0];
-            head.style.left = `${initialLeft}px`;
-            head.style.top = `${initialTop}px`;
-    }
+    
     grow(){
         const tail = this.segments[this.segments.length - 1];
         const left = parseInt(tail.style.left);

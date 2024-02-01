@@ -7,7 +7,7 @@ class Game {
         this.gameEndScreen = document.getElementById("game-end");
 
         // I am going to create a player in the future
-        this.player = new Player(this.gameScreen, 500, 300, 60, 48, "docs/images/snake-body.svg", 60, 48);
+        this.player = new Player(this.gameScreen, 500, 300, 60, 48, "docs/images/snake-body.svg", 60, 48, 1);
 
         // Style for the Game Board
         this.height = 600;
@@ -111,6 +111,11 @@ class Game {
                 firstHeart.style.display = "none";
             }
         }
+    //Increase the player speed every 50 points.
+    if(this.score % 50 === 0) {
+        this.player.speed += 0.002;
+    }
+    
     }
 
     endGame() {
