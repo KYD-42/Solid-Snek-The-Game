@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="./docs/styles/style.css" />
+  <title>SolidSnek</title>
+</head>
+
+<body>
+  <video id="background-video" autoplay loop muted>
+    <source src="./docs/images/background.mp4" type="video/mp4">
+  </video>
+  <main>
+    <div id="game-intro">
+      <img src="./docs/images/logo-snek.svg" alt="" class="logo-intro" />
+      <br />
+      <button id="start-button">Start Game</button>
+      <p>The arrows
+        <br/>control SNEK!
+      <br>← ↑ ↓ →</p>
+    </div>
+
+    <div id="game-container">
+      <div id="stats-container" style="display: none;">
+        <h2>Score</h2>
+        <h2 id="score">0</h2>
+        <div id="stats" style="display: none;">
+          <h2 id="health-counter">Health:</h2>
+          <img id="heart-1" src="./docs/images/heart.svg" alt="">
+          <img id="heart-2" src="./docs/images/heart.svg" alt="">
+          <img id="heart-3" src="./docs/images/heart.svg" alt="">
+        </div>
+      </div>
+      <div id="game-screen"></div>
+      <audio id="soundtrack" src="./docs/sound/snek-music.mp3"></audio>
+      
+    </div>
+    <div id="game-end">
+      <img src="./docs/images/game-over.svg" alt="" class="logo-over" />
+      <h1>You lost at a 27 year old game... c'mon dude!</h1>
+      <br/>
+      <button id="restart-button">Restart</button>
+      <audio id="game-over" src="./docs/sound/game-over.mp3"></audio>
+    </div>
+  </main>
+
+  <script type="text/javascript" src="./docs/js/obstacle.js"></script>
+  <script type="text/javascript" src="./docs/js/player.js"></script>
+  <script type="text/javascript" src="./docs/js/game.js"></script>
+  <script type="text/javascript" src="./docs/js/script.js"></script>
+</body>
+
+</html>

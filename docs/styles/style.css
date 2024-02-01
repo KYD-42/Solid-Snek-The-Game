@@ -1,0 +1,140 @@
+
+@import url('https://fonts.cdnfonts.com/css/arcade-classic');
+
+
+body {
+  margin: 50px;
+  padding: 30px;
+  text-align: center;
+  font-family: 'ArcadeClassic', sans-serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+}
+
+#background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  object-fit: fill;
+  z-index: -1;
+}
+
+#game-intro {
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  padding: 10px 0px;
+}
+
+#stats-container {
+  position: absolute;
+  top: 30%;
+  left: 120px;
+  padding: 10px;
+  color: #202619;
+  margin: 0;
+  background: lightgray;
+  border-radius: 20px;
+  width: 200px;
+  text-align: center;
+  transform: translateY(-50%);
+  box-shadow: 0 1.0em gray;
+}
+
+#stats {
+  position: absolute;
+  top: 170%;
+  left: 1px;
+  padding: 10px;
+  background: lightgray;
+  border-radius: 20px;
+  height: 130px;
+  width: 200px;
+  transform: translateY(-50%);
+  box-shadow: 0 1.0em gray;
+}
+
+#game-screen {
+  display: none;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0px 0px; */
+  overflow: hidden;
+  position: relative;
+  background-image: url(../images/game-background.svg);
+  border-radius: 1%;
+  box-shadow: 0 0 .2em #202619;
+}
+
+#heart-1,
+#heart-2,
+#heart-3 {
+  width: 40px;
+}
+
+#game-end {
+  display: none;
+}
+
+#game-end h1 {
+  font-family: 'courier', sans-serif;
+  font-size: 24px; 
+  color: #ffffff; 
+}
+
+#game-intro p {
+  font-family: 'courier', sans-serif;
+  font-size: 24px; 
+  color: #ffffff;
+}
+
+.logo-intro {
+  width: 800px;
+  margin-bottom: 40px;
+  margin-top: 80px;
+}
+
+.logo-over {
+  width: 1000px;
+  margin-bottom: 40px;
+  margin-top: 80px;
+}
+
+body button {
+  text-align: center;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-family: 'ArcadeClassic', sans-serif;
+  font-weight: bold;
+  font-size: 70px;
+  background-color: lightgray;
+  text-shadow: -1px -1px #202619, 1px 1px white;
+  color: gray;
+  border-radius: 10px;
+  box-shadow: 0 .3em gray;
+  cursor: pointer;
+  padding: 20px;
+  }
+
+  body button:active {
+    box-shadow: none;
+    position: relative;
+    top: .3em;
+  }
