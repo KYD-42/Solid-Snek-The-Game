@@ -74,12 +74,12 @@ body {
   position: absolute;
   justify-content: center;
   align-items: center;
-  /* padding: 0px 0px; */
   overflow: hidden;
   position: relative;
   background-image: url(../images/game-background.svg);
   border-radius: 1%;
   box-shadow: 0 0 .2em #202619;
+  margin-top: 50px;
 }
 
 #heart-1,
