@@ -56,15 +56,22 @@ class Game {
     update() {
         // Score, lives, scoreboard
         let score = document.getElementById("score");
-        let lives = document.getElementById("lives");
 
         /* Every Frame of the game, i want to check if the car is moving*/
         this.player.move();
 
-        if(this.player.didCollideWithWalls()){
+        if (this.player.didCollideWithWalls()) {
             this.lives--;
+        // change the players head to the dead snake image if it collides with the walls = losing lives.
+            this.player.changeHeadImage("docs/images/dead-snake.svg");
+        // Change back to the normal image after 1 second, with the setTimeout() function
+            setTimeout(() => {
+              if (!this.player.didCollideWithWalls()) {
+                this.player.changeHeadImage("docs/images/snake-body.svg");
+              }
+            }, 500); // 1 second.
+    
         }
-
 
         // Iterate over the obstacles array and make them move
         for (let i = 0; i < this.obstacles.length; i++) {
@@ -80,14 +87,13 @@ class Game {
 
                 this.score = this.score + 10;
             }
-
         }
 
         if (this.lives === 0) {
             this.endGame();
         }
 
-        // If there are no obstacles, push a new one afer 1second and a half.
+        // If there are no obstacles, push a new one afer 1/2 second.
         else if (!this.obstacles.length && !this.isPushingObstacle) {
             this.isPushingObstacle = true;
             setTimeout(() => {
@@ -95,7 +101,6 @@ class Game {
                 this.isPushingObstacle = false;
             }, 500)
         }
-
         score.innerHTML = this.score;
         if (this.lives < 3){
             if(this.lives === 2){
@@ -111,13 +116,16 @@ class Game {
                 firstHeart.style.display = "none";
             }
         }
-    //Increase the player speed every 50 points.
-    if(this.score % 50 === 0) {
-        this.player.speed += 0.002;
+    //Increase the player speed every 50 points. / this if statement as true/false values so that the speed only increases wiht points.
+    if (this.score % 50 === 0) {
+        if (!this.speedIncreased) {
+            this.player.speed += 0.1;
+            this.speedIncreased = true;
+        }
+    } else {
+        this.speedIncreased = false;
     }
-    
-    }
-
+}
     endGame() {
         // Change the gameIsOver status. If its true, remember that this is going to break the animation loop.
         this.gameIsOver = true;
@@ -125,21 +133,39 @@ class Game {
         this.player.head.remove();
         // Remove all obstacles
         this.obstacles.forEach((obstacle, index) => {
-            // Remove the obstacle from JS
-            this.obstacles.splice(index, 1);
-            // Remove the obstacle from HTML
-            obstacle.element.remove();
+        // Remove the obstacle from JS
+        this.obstacles.splice(index, 1);
+        // Remove the obstacle from HTML
+        obstacle.element.remove();
         });
         // Hide the current game screen...
         this.gameScreen.style.display = "none";
         // In order, to display the game end screen
         this.gameEndScreen.style.display = "block";
-        this.soundtrack.pause("soundtrack");
 
+        this.soundtrack.pause("soundtrack");
+        
         this.soundtrack = document.getElementById("game-over"); // specific element soundtrack
         this.soundtrack.play("game-over");
 
         document.getElementById('stats-container').style.display = 'none';
         document.getElementById('stats').style.display = 'none';
+
+        document.getElementById('game-end').querySelector('h1').textContent = `You got ${this.score} snek points!`;
+
+    // Check score and display appropriate message
+    /*
+
+    let endMessage = document.getElementById('game-end').querySelector('h1');
+    endMessage.textContent = `You got ${this.score} snek points!`;
+
+
+    if (this.score < 100) {
+        endMessage.textContent += "Lorem Ipsum dolor sit amet";
+    } else if (this.score > 450) {
+        endMessage.textContent += "Lorem Ipsum dolor sit amet";
+    }
+    */
+
     }
 }

@@ -32,6 +32,11 @@ class Player {
         this.gameScreen.appendChild(element);
         return element;
       }
+    // function that changes the head image to a new one -> newImgSrc, the new svg.
+    changeHeadImage(newImgSrc) {
+        this.head.src = newImgSrc;
+    }
+
     move() {
         for (let i = this.segments.length - 1; i > 0; i--) {
             const prevSegment = this.segments[i - 1];
