@@ -116,7 +116,9 @@ class Game {
                 firstHeart.style.display = "none";
             }
         }
-    //Increase the player speed every 50 points. / this if statement as true/false values so that the speed only increases wiht points.
+    // Increase the player speed every 50 points.
+    // This if statement as true/false values so that the speed only increases wiht points.
+    // If the score is a multiple of 50, then the speed is increased.
     if (this.score % 50 === 0) {
         if (!this.speedIncreased) {
             this.player.speed += 0.1;
